@@ -1,9 +1,7 @@
-import productdb,{
-    bulkcreate
-} from './Module.js';
+import productdb, {bulkcreate, getData} from './Module.js';
 
-let techDatabase = productdb("Productdb",{
-    products:`++id, name, seller, price`
+let techDatabase = productdb("Productdb", {
+    products: `++id, name, seller, price`
 });
 
 // input tags
@@ -14,35 +12,36 @@ const price = document.getElementById("price");
 
 // button function
 const btncreate = document.getElementById("btn-create");
-const btnreact = document.getElementById("btn-read");
+const btnread = document.getElementById("btn-read");
 const btnupdate = document.getElementById("btn-update");
 const btndelete = document.getElementById("btn-delete");
 
 
 // insert value using create button
 
-btncreate.onclick = (event) =>{
-    let flag = bulkcreate(techDatabase.products,{
-        name : proname.value,
-        seller : seller.value,
-        price : price.value,
-    } )
-    //console.log(flag);
+btncreate.onclick = (event) => {
+    let flag = bulkcreate(techDatabase.products, {
+        name: proname.value,
+        seller: seller.value,
+        price: price.value,
+    })
 
 
     proname.value = seller.value = price.value = "";
-    getData();
+    getData(techDatabase.products,(data)=>{
+        userid.value = data.id + 1 || 1;
+
+    });
 }
 
-const getData = () => {
-    let index = 0;
-    let object = {};
 
-    techDatabase.products.count((count) => {
-        if(count){
-            techDatabase.products.each(table => {
-                console.log(table);
-            })
-        }
-    })
+btnread.onclick = table;
+
+function table(){
+    const tableBody = document.getElementById("tbody");
+    let tableData = document.createElement("td");
+    console.log(tableBody);
+
+    console.log(tableData);
 }
+
