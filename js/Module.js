@@ -1,22 +1,8 @@
 const productdb = (dbname,table) =>{
-    //create DB
-
     const techDatabase = new Dexie(dbname);
     techDatabase.version(4).stores(table);
     techDatabase.open();
-
-    /*
-    const techDatabase = new Dexie('techDatabase');
-    techDatabase.version(1).stores({
-        friends:'name,age'
-    })
-
-
-     */
-
-
     return techDatabase;
-
 }
 
 
@@ -67,8 +53,16 @@ const sortObject = sortObject => {
 }
 
 
+
+const createElement = (tagname,appendTo,func) =>{
+    const element = document.createElement(tagname);
+    if(appendTo) appendTo.appendChild(element);
+    if(func) func(element);
+}
+
 export default productdb;
 export{
     bulkcreate,
-    getData
+    getData,
+    createElement,
 }

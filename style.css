@@ -1,21 +1,50 @@
-.d-flex input{
+.d-flex input {
     margin: .9em 0;
 }
 
-.d-flex button{
+.d-flex button {
     margin: 1.5em .6em;
     padding: .3em 2.4em;
 }
 
-.container table{
-    margin: 1em 10em;
+.container table {
+    margin: 1em 4%;
 }
 
-table .btndelete{
+table .btndelete {
     color: red;
 }
 
-table .btnedit{
-color: #00ff6d;
+table .btnedit {
+    color: #00ff6d;
     cursor: pointer;
+}
+
+.notfound-text {
+    font-weight: bold;
+    color: red;
+    font-size: 3em;
+    letter-spacing: .5em;
+}
+
+.insertmessage,
+.updatemessage,
+.deletemessage {
+    position: absolute;
+    top: -40px;
+
+}
+
+.movedown {
+    animation: slideup 3.4s ease;
+}
+
+@keyframes slideup {
+    50% {
+        top: 0;
+    }
+
+    100% {
+        top: -40px;
+    }
 }
