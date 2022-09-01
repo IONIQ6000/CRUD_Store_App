@@ -1,4 +1,4 @@
-const productdb = (dbname,table) =>{
+const productDatabase = (dbname, table) => {
     const techDatabase = new Dexie(dbname);
     techDatabase.version(4).stores(table);
     techDatabase.open();
@@ -6,21 +6,18 @@ const productdb = (dbname,table) =>{
 }
 
 
-const bulkcreate = (databaseTable,data) =>{
+const bulkcreate = (databaseTable, data) => {
     let TextboxNotEmpty = isTextboxEmpty(data);
-    if (TextboxNotEmpty){
+    if (TextboxNotEmpty) {
         databaseTable.bulkAdd([data]);
-        console.log("data inserted")
-    } else {
-        console.log("You gotta provide data")
     }
     return TextboxNotEmpty;
 }
 
-const isTextboxEmpty = object =>{
+const isTextboxEmpty = object => {
     let isTextboxEmpty = false;
 
-    for(const value in object){
+    for (const value in object) {
         isTextboxEmpty = object[value] !== "" && object.hasOwnProperty(value);
     }
     return isTextboxEmpty;
@@ -53,15 +50,14 @@ const sortObject = sortObject => {
 }
 
 
-
-const createElement = (tagname,appendTo,func) =>{
+const createElement = (tagname, appendTo, func) => {
     const element = document.createElement(tagname);
-    if(appendTo) appendTo.appendChild(element);
-    if(func) func(element);
+    if (appendTo) appendTo.appendChild(element);
+    if (func) func(element);
 }
 
-export default productdb;
-export{
+export default productDatabase;
+export {
     bulkcreate,
     getData,
     createElement,

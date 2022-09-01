@@ -1,12 +1,12 @@
-import productdb, {bulkcreate, getData, createElement} from './Module.js';
+import productDatabase, {bulkcreate, getData, createElement} from './Module.js';
 
-let techDatabase = productdb("Productdb", {
+let techDatabase = productDatabase("productDatabase", {
     products: `++id, name, seller, price`
 });
 
 // input tags
 const userid = document.getElementById("userid");
-const proname = document.getElementById("proname");
+const productname = document.getElementById("productname");
 const seller = document.getElementById("seller");
 const price = document.getElementById("price");
 
@@ -20,15 +20,15 @@ const notfound = document.getElementById("notfound");
 
 // insert value using create button
 
-createButtton.onclick = (event) => {
+createButtton.onclick = () => {
     let flag = bulkcreate(techDatabase.products, {
-        name: proname.value,
+        name: productname.value,
         seller: seller.value,
         price: price.value,
     })
 
 
-    proname.value = seller.value = price.value = "";
+    productname.value = seller.value = price.value = "";
     getData(techDatabase.products, (data) => {
         userid.value = data.id + 1 || 1;
 
@@ -47,23 +47,30 @@ updateButton.onclick = () => {
     if (id) {
 
         techDatabase.products.update(id, {
-            name: proname.value,
+            name: productname.value,
             seller: seller.value,
             price: price.value,
         }).then((updated) => {
-            let get = updated ? `data Updated` : `Couldn't update data`;
-            console.log(get);
+            let getUpdated = !!updated;
+
+            let updateMessage = document.querySelector(".updatemessage");
+            getMessage(getUpdated, updateMessage);
+            productname.value = seller.value = price.value = "";
+
         })
     }
 }
 
 deleteAllButton.onclick = () => {
     techDatabase.delete();
-    techDatabase = productdb("Productdb", {
+    techDatabase = productDatabase("Productdb", {
         products: `++id, name, seller, price`
     });
     techDatabase.open();
     table();
+    textID(userid);
+    let deleteMessage = document.querySelector(".deletemessage");
+    getMessage(true, deleteMessage);
 }
 
 window.onload = () => {
@@ -89,7 +96,7 @@ function table() {
 
                 for (const value in data) {
                     createElement("td", tr, td => {
-                        td.textContent = data.price === data[value] ? `$ ${data[value]}` : data[value];
+                        td.textContent = data.price === data[value] ? `$${data[value]}` : data[value];
                     })
                 }
                 createElement("td", tr, td => {
@@ -118,7 +125,7 @@ function editButton(event) {
     let id = parseInt(event.target.dataset.id);
     techDatabase.products.get(id, data => {
         userid.value = data.id || 0;
-        proname.value = data.name || "";
+        productname.value = data.name || "";
         seller.value = data.seller || "";
         price.value = data.price || "";
     })
@@ -136,7 +143,7 @@ function getMessage(flag, element) {
 
         setTimeout(() => {
             element.classList.forEach(classname => {
-                classname == "movedown" ? undefined : element.classList.remove("movedown");
+                classname == 'movedown' ? undefined : element.classList.remove('movedown');
             });
         }, 4000);
     }

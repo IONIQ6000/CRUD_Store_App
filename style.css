@@ -1,14 +1,17 @@
 .d-flex input {
-    margin: .9em 0;
+    margin: 2em 1em;
+
 }
 
 .d-flex button {
-    margin: 1.5em .6em;
-    padding: .3em 2.4em;
-}
+    margin: 2em 1em;
 
+}
+.userid-color {
+    background-color: #e7e7e7;
+}
 .container table {
-    margin: 1em 4%;
+    margin: 2em 4%;
 }
 
 table .btndelete {
@@ -16,13 +19,16 @@ table .btndelete {
 }
 
 table .btnedit {
-    color: #00ff6d;
+    color: #00a843;
     cursor: pointer;
 }
 
-.notfound-text {
+
+.notfound-text,
+#header h1 {
+    padding-top: 4em;
     font-weight: bold;
-    color: red;
+    color: #0F4C81;
     font-size: 3em;
     letter-spacing: .5em;
 }
@@ -39,6 +45,7 @@ table .btnedit {
     animation: slideup 3.4s ease;
 }
 
+
 @keyframes slideup {
     50% {
         top: 0;
@@ -47,4 +54,16 @@ table .btnedit {
     100% {
         top: -40px;
     }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
