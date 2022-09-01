@@ -18,6 +18,9 @@
     <script src="js/main.js" type="module"></script>
 </head>
 <body>
+<div class="w-100 btn btn-success insertmessage">Data inserted</div>
+<div class="w-100 btn btn-warning updatemessage">Click read to see updates</div>
+<div class="w-100 btn btn-danger deletemessage">Data Removed</div>
 
 <div class="container text-center">
     <div id="header">
@@ -28,18 +31,18 @@
 
 <div class="d-flex justify-content-center">
     <form>
-        <input type="text" id="userid" class="form-control-lg border-0 userid-color" readonly placeholder="#"
-               autocomplete="off">
-        <input type="text" id="productname" class="form-control-lg" placeholder="Product name" autocomplete="off">
-        <input type="text" id="seller" class="form-control-lg" placeholder="Seller" autocomplete="off">
-        <input type="number" id="price" class="form-control-lg" placeholder="Price" autocomplete="off">
+        <label for="userid"></label><input type="text" id="userid" class="form-control-lg border-0 userid-color" readonly placeholder="#"
+                                           autocomplete="off">
+        <label for="productname"></label><input type="text" id="productname" class="form-control-lg" placeholder="Product name" autocomplete="off">
+        <label for="seller"></label><input type="text" id="seller" class="form-control-lg" placeholder="Seller" autocomplete="off">
+        <label for="price"></label><input type="number" id="price" class="form-control-lg" placeholder="Price" autocomplete="off">
     </form>
 </div>
 <div class="d-flex justify-content-center">
     <button class="btn btn-light btn-lg" id="btn-create">Insert Data</button>
     <button class="btn btn-light btn-lg" id="btn-read">Read Data</button>
     <button class="btn btn-light btn-lg" id="btn-update">Update Data</button>
-    <button class="btn btn-outline-dark btn-lg" id="btn-delete">Delete All</button>
+    <button class="btn btn-outline-dark btn-lg" id="btn-delete">Remove All</button>
 
 </div>
 <div class="container d-flex">
@@ -52,7 +55,7 @@
             <th scope="col">Seller</th>
             <th scope="col">Price</th>
             <th scope="col">Edit</th>
-            <th scope="col">&nbsp</th>
+            <th scope="col">Remove</th>
         </tr>
         </thead>
         <tbody id="tbody">
@@ -63,9 +66,7 @@
     <div id="notfound"></div>
 </div>
 
-<div class="w-100 btn btn-success insertmessage">Data inserted</div>
-<div class="w-100 btn btn-warning updatemessage">Click read to see updates</div>
-<div class="w-100 btn btn-danger deletemessage">Data deleted</div>
+
 
 </body>
 </html>

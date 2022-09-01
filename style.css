@@ -22,10 +22,7 @@ table .btnedit {
     cursor: pointer;
 }
 
-
-
-.notfound-text,
-#header h1 {
+#header h1{
     padding-top: 4em;
     font-weight: bold;
     color: #0F4C81;
@@ -33,12 +30,19 @@ table .btnedit {
     letter-spacing: .5em;
 }
 
+.notfound-text
+ {
+    font-weight: bold;
+    color: #e30d40;
+    font-size: 2em;
+    letter-spacing: .2em;
+}
+
 .insertmessage,
 .updatemessage,
 .deletemessage {
     position: absolute;
     top: -40px;
-
 }
 
 .movedown {
@@ -56,14 +60,13 @@ table .btnedit {
     }
 }
 
-/* Chrome, Safari, Edge, Opera */
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
 }

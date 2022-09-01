@@ -4,21 +4,16 @@ let techDatabase = productDatabase("productDatabase", {
     products: `++id, name, seller, price`
 });
 
-// input tags
 const userid = document.getElementById("userid");
 const productname = document.getElementById("productname");
 const seller = document.getElementById("seller");
 const price = document.getElementById("price");
-
-// button function
 const createButtton = document.getElementById("btn-create");
 const readButton = document.getElementById("btn-read");
 const updateButton = document.getElementById("btn-update");
 const deleteAllButton = document.getElementById("btn-delete");
-
 const notfound = document.getElementById("notfound");
 
-// insert value using create button
 
 createButtton.onclick = () => {
     let flag = bulkcreate(techDatabase.products, {
@@ -33,10 +28,7 @@ createButtton.onclick = () => {
         userid.value = data.id + 1 || 1;
 
     });
-
-    let insertMessage = document.querySelector(".insertmessage");
-
-    getMessage(flag, insertMessage);
+    getMessage(flag, document.querySelector(".insertmessage"));
 }
 
 
@@ -51,10 +43,7 @@ updateButton.onclick = () => {
             seller: seller.value,
             price: price.value,
         }).then((updated) => {
-            let getUpdated = !!updated;
-
-            let updateMessage = document.querySelector(".updatemessage");
-            getMessage(getUpdated, updateMessage);
+            getMessage(!!updated, document.querySelector(".updatemessage"));
             productname.value = seller.value = price.value = "";
 
         })
@@ -69,8 +58,7 @@ deleteAllButton.onclick = () => {
     techDatabase.open();
     table();
     textID(userid);
-    let deleteMessage = document.querySelector(".deletemessage");
-    getMessage(true, deleteMessage);
+    getMessage(true, document.querySelector(".deletemessage"));
 }
 
 window.onload = () => {
@@ -143,7 +131,9 @@ function getMessage(flag, element) {
 
         setTimeout(() => {
             element.classList.forEach(classname => {
-                classname == 'movedown' ? undefined : element.classList.remove('movedown');
+                if (classname !== "movedown") {
+                    element.classList.remove("movedown");
+                }
             });
         }, 4000);
     }
