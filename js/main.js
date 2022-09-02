@@ -12,7 +12,6 @@ const createButtton = document.getElementById("btn-create");
 const readButton = document.getElementById("btn-read");
 const updateButton = document.getElementById("btn-update");
 const deleteAllButton = document.getElementById("btn-delete");
-const notfound = document.getElementById("notfound");
 
 
 createButtton.onclick = () => {
@@ -28,7 +27,7 @@ createButtton.onclick = () => {
         userid.value = data.id + 1 || 1;
 
     });
-    getMessage(flag, document.querySelector(".insertmessage"));
+    flag ? displayMessage("DATA INSERTED","#00ad43"):"";
 }
 
 
@@ -43,7 +42,7 @@ updateButton.onclick = () => {
             seller: seller.value,
             price: price.value,
         }).then((updated) => {
-            getMessage(!!updated, document.querySelector(".updatemessage"));
+            !!updated ? displayMessage("DATA UPDATED","black"):"";
             productname.value = seller.value = price.value = "";
 
         })
@@ -58,7 +57,7 @@ deleteAllButton.onclick = () => {
     techDatabase.open();
     table();
     textID(userid);
-    getMessage(true, document.querySelector(".deletemessage"));
+    displayMessage("DATA DELETED");
 }
 
 window.onload = () => {
@@ -103,7 +102,7 @@ function table() {
                 })
             })
         } else {
-            notfound.textContent = "DATABASE EMPTY"
+            displayMessage("DATABASE EMPTY","#ad000f")
         }
     })
 
@@ -125,16 +124,13 @@ function trashButton(event) {
     table();
 }
 
-function getMessage(flag, element) {
-    if (flag) {
-        element.className += "movedown";
 
+function displayMessage(alertText, alertColor) {
+    document.getElementById("bar-alert").style.color = alertColor;
+    document.getElementById("bar-alert").textContent = alertText;
+    $("#bar-alert").addClass('show')
         setTimeout(() => {
-            element.classList.forEach(classname => {
-                if (classname !== "movedown") {
-                    element.classList.remove("movedown");
-                }
-            });
-        }, 4000);
-    }
+            $("#bar-alert").removeClass('show')
+
+        }, 3000);
 }
