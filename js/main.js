@@ -132,5 +132,5 @@ function displayMessage(alertText, alertColor) {
         setTimeout(() => {
             $("#bar-alert").removeClass('show')
 
-        }, 3000);
+        }, 1500);
 }
